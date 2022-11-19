@@ -1,15 +1,16 @@
-from picamera import PiCamera
+from picamera2 import Picamera2
 from time import sleep
 
-# if button prested called this function
+# if button pressed called this function
 
 def image_capture():
-    image_path = "/pi/recent_image.jpg"
-    
-    camera = PiCamera()
-    camera.start_preview(alpha=192)
-    sleep(1)
-    camera.capture(image_path)
-    camera.stop_preview()
+    image_path = "/home/magicglove/MagicGlove/image.jpg"
+
+    camera = Picamera2()
+    camera.start()
+    camera.capture_file(image_path)
 
     return image_path
+
+if __name__ == "__main__":
+    image_capture()
