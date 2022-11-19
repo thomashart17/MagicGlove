@@ -1,9 +1,9 @@
-import RPi.GPIU
+import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BOARD)
 
-resistor_pin = 
+resistor_pin = 7
 
 while True: #def rc_time(pin):
     GPIO.setup(resistor_pin, GPIO.OUT)
@@ -12,7 +12,7 @@ while True: #def rc_time(pin):
 
     GPIO.setup(resistor_pin, GPIO.IN) # this is now reading values from the pin
 
-    current_time = time.time
+    current_time = time.time()
     difference = 0
 
     while GPIO.input(resistor_pin) == GPIO.LOW:

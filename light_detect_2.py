@@ -1,4 +1,4 @@
-import RPi.GPIU
+import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BOARD)
@@ -12,7 +12,7 @@ def photoresistor(resistor_pin):
     GPIO.output(resistor_pin, GPIO.LOW) #writing a low voltage value to the pin "turnong it off"
     time.sleep(0.1)
 
-    GPIO.setup(pin_to_circuit, GPIO.IN) #start reading
+    GPIO.setup(resistor_pin, GPIO.IN) #start reading
 
     while (GPIO.input(resistor_pin) == GPIO.LOW): #stay in the loop until the pin gets to high
         count+=1
@@ -20,7 +20,7 @@ def photoresistor(resistor_pin):
     return count
 
 try:
-    while true:
+    while True:
         print(photoresistor(resistor_pin))
 except KeyboardInterrupt:
     pass

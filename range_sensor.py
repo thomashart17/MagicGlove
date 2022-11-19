@@ -31,7 +31,7 @@ def compute_distance():
 
     # pulse_start = time.time()
     # pulse_end = time.time()
-    
+
     #save start time
     while GPIO.input(ECHO)==0:
         pulse_start = time.time()
@@ -53,7 +53,7 @@ if __name__ == '__main__':
         while True:
             dist = compute_distance()
             print("Distance", dist, "cm")
-            if dist < 50.00:  
+            if dist < 100.00:
                 while True:
                     GPIO.output(BUZZER, GPIO.HIGH)
                     print('Beep')
@@ -62,7 +62,7 @@ if __name__ == '__main__':
                     print('No Beep')
                     time.sleep(0.5)
                     dist = compute_distance()
-                    if dist > 50.00:
+                    if dist > 100.00:
                         break
             time.sleep(0.5)
 
