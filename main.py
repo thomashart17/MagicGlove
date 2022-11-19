@@ -5,7 +5,7 @@ from range_sensor import *
 
 def main():
     # if COLOUR BUTTON clicked:
-    colour_detect()
+    call_colour_detection()
 
     # if OBSTACLE BUTTON clicked:
     # call_range_sensor()
