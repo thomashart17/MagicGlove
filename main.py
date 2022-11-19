@@ -1,6 +1,7 @@
 from camera_detect import *
 from colour_detect import *
 from range_sensor import *
+from light_detection import *
 from MagicGlove.gcp_text2speech import *
 
 def main():
@@ -41,10 +42,9 @@ def call_light_detection():
     # var for gcp
     audio_file = "/home/magicglove/MagicGlove/test/audiofile.mp3"
 
-    # call light detector file
-    # returns true or false store value in lights_on, example code:
-
-    lights_on = True # true = lights on, true = lights off
+    # call light detector file to get bool value
+    lights_on = light_intensity()
+    
     if lights_on == True:
         gcp_phrase = "The lights are on"
         speech_to_text(gcp_phrase, audio_file)
