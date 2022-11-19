@@ -12,7 +12,7 @@ def main():
 
 
 def call_colour_detection():
-    image_path = "/home/magicglove/MagicGlove/image.jpg"
+    image_path = "/home/magicglove/MagicGlove/test/image.jpg"
 
     # get image
     image_capture(image_path)
