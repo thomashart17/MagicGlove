@@ -10,6 +10,7 @@ def image_capture(path):
     sleep(2)
     camera.start()
     camera.capture_file(path)
+    print("FILE CAPTURED")
     sleep(2)
     colour_detect_on_image(path)
 
