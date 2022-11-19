@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from camera_detect import *
 
-def colour_detect(path):
+def colour_detect_on_image(path):
     
     print("Colour Recognition Python")
 
@@ -48,5 +48,5 @@ def colour_detect(path):
 
     final_colour = max(dictionary_test, key=dictionary_test.get)
     print("Maximum value: ",final_colour)
-    
+
     return final_colour
