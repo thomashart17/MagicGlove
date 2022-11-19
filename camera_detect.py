@@ -12,8 +12,8 @@ def image_capture(path):
     camera.capture_file(path)
     print("FILE CAPTURED")
     sleep(2)
-    colour_detect_on_image(path)
+    #colour_detect_on_image(path)
 
 
 if __name__ == "__main__":
-    image_capture("test")
+    image_capture("/home/magicglove/MagicGlove/test/image.jpg")

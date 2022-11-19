@@ -18,8 +18,8 @@ def call_colour_detection():
     image_capture(image_path)
 
     # run colour detect on image and get colour
-    #recent_colour = colour_detect(image_path)
-    #print(recent_colour)
+    recent_colour = colour_detect_on_image(image_path)
+    print(recent_colour)
 
     # call gcp
     # speech_to_text(recent_colour)

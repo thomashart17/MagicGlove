@@ -50,3 +50,6 @@ def colour_detect_on_image(path):
     print("Maximum value: ",final_colour)
 
     return final_colour
+
+if __name__ == "__main__":
+    colour_detect_on_image("/home/magicglove/MagicGlove/test/image.jpg")
