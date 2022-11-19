@@ -11,7 +11,7 @@ def main():
     # call_range_sensor()
 
 
-def colour_detect():
+def call_colour_detection():
     image_path = "/home/magicglove/MagicGlove/image.jpg"
 
     # get image
