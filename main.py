@@ -1,7 +1,7 @@
 from camera_detect import *
 from colour_detect import *
 from range_sensor import *
-# from gcp_text2speech import *
+from MagicGlove.gcp_text2speech import *
 
 def main():
     # if COLOUR BUTTON clicked:
@@ -22,7 +22,8 @@ def call_colour_detection():
     print(recent_colour)
 
     # call gcp
-    # speech_to_text(recent_colour)
+    audio_file = "/home/magicglove/MagicGlove/test/audiofile.mp3"
+    speech_to_text(recent_colour, audio_file)
 
 
 if __name__ == "__main__":
