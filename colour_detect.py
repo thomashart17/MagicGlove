@@ -3,7 +3,7 @@ import numpy as np
 from camera_detect import *
 
 def colour_detect_on_image(path):
-    
+
     print("Colour Recognition Python")
 
     # Get image input
@@ -30,7 +30,7 @@ def colour_detect_on_image(path):
             hue = hsv_img[x,y][0]
             sat = hsv_img[x,y][1]
             value = hsv_img [x,y][2]
-            
+
             for  colour in colour_dict:
                 if ( (colour_dict[colour][1][0] < hue < colour_dict[colour][0][0]) and (colour_dict[colour][1][1] < sat < colour_dict[colour][0][1]) and (colour_dict[colour][1][2] < value < colour_dict[colour][0][2]) ):
                     array_store.append(colour)

@@ -7,12 +7,10 @@ from colour_detect import *
 def image_capture(path):
 
     camera = Picamera2()
-    sleep(2)
     camera.start()
+    sleep(2)
     camera.capture_file(path)
     print("FILE CAPTURED")
-    sleep(2)
-    #colour_detect_on_image(path)
 
 
 if __name__ == "__main__":
