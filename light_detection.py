@@ -3,7 +3,7 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 
-resistor_pin = 7
+resistorpin = 7
 
 
 def resistor_time(resistor_pin):
@@ -12,9 +12,12 @@ def resistor_time(resistor_pin):
     GPIO.output(resistor_pin, GPIO.LOW)
     time.sleep(0.1)
     
-    GPIO.setup(pin, GPIO.IN) #reversing pin back to input
+    GPIO.setup(resistor_pin, GPIO.IN) #reversing pin back to input
     
-    while (GPIO.input(pin) == GPIO.LOW):
+    while (GPIO.input(resistor_pin) == GPIO.LOW):
         reading +=1
       
     return reading
+
+if __name__ == "__main__":
+    resistor_time(resistorpin)
