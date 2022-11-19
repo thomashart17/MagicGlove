@@ -6,6 +6,7 @@ from time import sleep
 def image_capture(path):
 
     camera = Picamera2()
+    sleep(2)
     camera.start()
     camera.capture_file(path)
 
