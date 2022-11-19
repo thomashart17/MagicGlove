@@ -4,7 +4,7 @@ GPIO.setmode(GPIO.BOARD)
 delayt = .1 
 value = 0 # this variable will be used to store the ldr value
 ldr = 7 #ldr is connected with pin number 7
-led = 11 #led is connected with pin number 11
+#led = 11 #led is connected with pin number 11
 GPIO.setup(led, GPIO.OUT) # as led is an output device so that’s why we set it to output.
 GPIO.output(led, False) # keep led off by default 
 def rc_time (ldr):
@@ -27,17 +27,15 @@ def rc_time (ldr):
 
 #Catch when script is interrupted, cleanup correctly
 try:
-    # Main loop
+    #light = True when it's light and False when dark
     while True:
-        print("Ldr Value:")
         value = rc_time(ldr)
-        print(value)
-        if ( value <= 200 ):
-                print("Lights are ON")
-                GPIO.output(led, GPIO.LOW)
+        if (value <= 200):
+                light = True
+                #GPIO.output(led, GPIO.LOW) # for the led
         if (value > 200):
-                print("Lights are OFF")
-                GPIO.output(led, GPIO.HIGH)
+                light = False
+                #GPIO.output(led, GPIO.HIGH) #for the led
 except KeyboardInterrupt:
     pass
 finally:
