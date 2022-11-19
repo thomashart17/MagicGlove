@@ -12,11 +12,13 @@ def main():
 
 
 def colour_detect():
+    image_path = "/pi/recent_image.jpg"
+
     # get image
-    image_capture()
+    image_capture(image_path)
 
     # run colour detect on image and get colour
-    recent_colour = colour_detect()
+    recent_colour = colour_detect(image_path)
 
     print(recent_colour)
 

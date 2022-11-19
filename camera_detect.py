@@ -3,14 +3,11 @@ from time import sleep
 
 # if button pressed called this function
 
-def image_capture():
-    image_path = "/home/magicglove/MagicGlove/image.jpg"
+def image_capture(path):
 
     camera = Picamera2()
     camera.start()
-    camera.capture_file(image_path)
-
-    return image_path
+    camera.capture_file(path)
 
 if __name__ == "__main__":
     image_capture()

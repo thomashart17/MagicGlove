@@ -2,16 +2,12 @@ import cv2
 import numpy as np
 from camera_detect import *
 
-def main():
-    colour_detect
-
-def colour_detect():
-    image_path = "/pi/recent_image.jpg"
+def colour_detect(path):
     
     print("Colour Recognition Python")
 
     # Get image input
-    img = cv2.imread(image_path)
+    img = cv2.imread(path)
     new_img = cv2.resize(img, (50, 50))
     height, width, _ = new_img.shape
     hsv_img = cv2.cvtColor(new_img, cv2.COLOR_BGR2HSV) # convert image from bgr 2 hsv
