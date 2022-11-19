@@ -9,7 +9,7 @@ def image_capture(path):
     camera = Picamera2()
     sleep(2)
     camera.start()
-    camera.capture_file("/home/magicglove/MagicGlove/test/image.jpg")
+    camera.capture_file(path)
     sleep(2)
     colour_detect_on_image(path)
 
