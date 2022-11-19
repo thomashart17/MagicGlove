@@ -2,7 +2,7 @@ import os
 from google.cloud import texttospeech # outdated or incomplete comparing to v1
 from google.cloud import texttospeech_v1
 
-def speech_to_text(colour, audio_file_path):
+def speech_to_text(phrase, audio_file_path):
     print("Running GCP...")
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"path to json"
 
@@ -10,8 +10,7 @@ def speech_to_text(colour, audio_file_path):
     client = texttospeech_v1.TextToSpeechClient()
     
     # Set the text input to be synthesized
-    colour_phrase = f"The colour is {colour}"
-    synthesis_input = texttospeech_v1.SynthesisInput(text=colour_phrase)
+    synthesis_input = texttospeech_v1.SynthesisInput(text=phrase)
 
 
     voice = texttospeech_v1.VoiceSelectionParams(
