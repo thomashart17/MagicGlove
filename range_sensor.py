@@ -48,7 +48,7 @@ def compute_distance():
     distance = round(distance,2)
     return distance
 
-if __name__ == '__main__':
+def call_range_sensor():
     try:
         while True:
             dist = compute_distance()
