@@ -10,4 +10,4 @@ def image_capture(path):
     camera.capture_file(path)
 
 if __name__ == "__main__":
-    image_capture()
+    image_capture("test")
