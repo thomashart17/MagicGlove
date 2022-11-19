@@ -12,7 +12,7 @@ def rc_time (ldr):
 
     #Output on the pin for
     GPIO.setup(ldr, GPIO.OUT)
-    GPIO.output(ldr, False)
+    GPIO.output(ldr, GPIO.LOW)
     time.sleep(delayt)
 
     #Change the pin back to input
@@ -32,12 +32,12 @@ try:
         print("Ldr Value:")
         value = rc_time(ldr)
         print(value)
-        if ( value <= 10000 ):
+        if ( value <= 200 ):
                 print("Lights are ON")
-                GPIO.output(led, True)
-        if (value > 10000):
+                GPIO.output(led, GPIO.LOW)
+        if (value > 200):
                 print("Lights are OFF")
-                GPIO.output(led, False)
+                GPIO.output(led, GPIO.HIGH)
 except KeyboardInterrupt:
     pass
 finally:
