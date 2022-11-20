@@ -1,7 +1,7 @@
 from camera_detect import *
 from colour_detect import *
 from range_sensor import *
-from MagicGlove.gcp_text2speech import *
+from gcp_text2speech import *
 
 def main():
     # var for gcp
