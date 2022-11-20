@@ -1,8 +1,8 @@
 from camera_detect import *
 from colour_detect import *
 from range_sensor import *
+from gcp_text2speech import *
 from light_detection import *
-from MagicGlove.gcp_text2speech import *
 import RPi.GPIO as GPIO
 import time
 
