@@ -45,18 +45,22 @@ def main():
 
             while ((GPIO.input(BUTTON_POWER) != GPIO.HIGH) and (GPIO.input(BUTTON_COLOR_DETECT) != GPIO.HIGH) and (GPIO.input(BUTTON_SPATIAL_REC) != GPIO.HIGH) and (GPIO.input(BUTTON_LIGHT_INTENSE) != GPIO.HIGH)):
                 if (GPIO.input(BUTTON_POWER) == GPIO.HIGH):
+                    print("POWER")
                     while (GPIO.input(BUTTON_POWER) == GPIO.HIGH): pass
                     power = False
                     break
                 elif (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH):
+                    print("COLOR")
                     while (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH): pass
                     colorStatus = True
                     break
                 elif (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH):
+                    print("SPATIAL")
                     while (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH): pass
                     spatialStatus = True
                     break
                 elif (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH):
+                    print("LIGHT")
                     while (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH): pass
                     lightStatus = True
                     break

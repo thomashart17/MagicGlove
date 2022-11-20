@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import time
 
 def light_intensity ():
-    GPIO.setmode(GPIO.BOARD)
     
     light_on = False
     count = 0
