@@ -16,7 +16,7 @@ def light_intensity ():
     GPIO.setup(ldr, GPIO.IN)
 
     #Count until the pin goes high
-    while (GPIO.input(ldr) == 0):
+    while (GPIO.input(ldr) == GPIO.LOW):
         count += 1
 
     if (count <= 200):
