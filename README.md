@@ -11,5 +11,5 @@ The sleek design is compact with three useful features:
 3)	Light Detection: Notifies people who are totally blind (18% of the blind community) and cannot perceive light if the lights in a room are on or off. 
 
 # Tech Stack 👾
-Software: Python, OpenCV, Google Cloud Speech-to-Text
+Software: Python, OpenCV, Google Cloud Speech-to-Text <br />
 Hardware: Raspberry Pi 4, Camera for Raspberry Pi, Ultrasonic Range Sensor, Buzzer, Photoresistors, Push Buttons
