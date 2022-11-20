@@ -36,6 +36,7 @@ def main():
 
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := True))
         while (not power): pass # Wait for power to turn on
+        print("power")
         GPIO.remove_event_detect(BUTTON_POWER)
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := False))
 
@@ -65,11 +66,15 @@ def main():
                 recent_colour = colour_detect_on_image(image_file)
                 print(recent_colour)
 
+                colorStatus = False
+
                 # call gcp
                 speech_to_text(f"The colour is {recent_colour}", audio_file)
             elif (spatialStatus):
                 speech_to_text("Spatial recognition on.", audio_file)
                 call_range_sensor()
+
+                spatialStatus = False
             else:
                 speech_to_text("Light detection on", audio_file)
                 
@@ -77,6 +82,8 @@ def main():
                     speech_to_text("The lights are on", audio_file)
                 else:
                     speech_to_text("The lights are off", audio_file)
+
+                lightStatus = False
         print("Power Off")
 
 if __name__ == "__main__":
