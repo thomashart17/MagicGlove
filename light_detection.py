@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BOARD)
 
 def light_intensity ():
     intensity = 0
