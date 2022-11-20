@@ -12,4 +12,4 @@ The sleek design is compact with three useful features:
 
 # Tech Stack 👾
 Software: Python, OpenCV, Google Cloud Speech-to-Text
-Hardware: Raspberry Pi 4, Camera for Raspberry Pi, , Ultrasonic Range Sensor, Buzzer, Photoresistors, Push Buttons
+Hardware: Raspberry Pi 4, Camera for Raspberry Pi, Ultrasonic Range Sensor, Buzzer, Photoresistors, Push Buttons
