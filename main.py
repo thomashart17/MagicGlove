@@ -86,7 +86,7 @@ def main():
                 call_range_sensor()
 
                 spatialStatus = False
-            else:
+            elif (lightStatus):
                 speech_to_text("Light detection on", audio_file)
                 
                 if light_intensity():
