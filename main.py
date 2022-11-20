@@ -100,14 +100,6 @@ def main():
                     speech_to_text("The lights are off", audio_file)
                     
 
-                # if intensity <= 200:
-                #     print('start')
-                #     speech_to_text("The lights are on", audio_file)
-                #     print ('end')
-                # else:
-                #     print('off')
-                #     speech_to_text("The lights are off", audio_file)
-
                 lightStatus = False
         print("Power Off")
 
