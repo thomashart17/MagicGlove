@@ -2,10 +2,10 @@ import RPi.GPIO as GPIO
 import time
 
 def light_intensity ():
-    
+
     light_on = False
     count = 0
-    delayt = .1 
+    delayt = 0.1
     ldr = 7 #ldr is connected with pin number 7
 
     GPIO.setup(ldr, GPIO.OUT)
@@ -19,10 +19,6 @@ def light_intensity ():
     while (GPIO.input(ldr) == GPIO.LOW):
         count += 1
 
-    if (count <= 200):
-        light_on = True
-    else:
-        light_on = False
+    light_on = count <= 200
 
     return light_on
-
