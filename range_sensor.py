@@ -53,7 +53,7 @@ def call_range_sensor():
         while True:
             dist = compute_distance()
             print("Distance", dist, "cm")
-            if dist < 50.00:  
+            if dist < 60.00:  
                 while True:
                     GPIO.output(BUZZER, GPIO.HIGH)
                     print('Beep')
@@ -62,7 +62,7 @@ def call_range_sensor():
                     print('No Beep')
                     time.sleep(0.5)
                     dist = compute_distance()
-                    if dist > 50.00:
+                    if dist > 60.00:
                         break
             time.sleep(0.5)
 
