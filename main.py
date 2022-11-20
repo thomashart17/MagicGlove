@@ -35,35 +35,49 @@ def main():
         spatialStatus = False
         lightStatus = False
 
-        while (GPIO.input(BUTTON_POWER) != GPIO.HIGH): pass
-        while (GPIO.input(BUTTON_POWER) != GPIO.LOW): pass
+        diff = 0
+        while (diff < 0.2):
+            while (GPIO.input(BUTTON_POWER) != GPIO.HIGH): pass
+            last = time.time()
+            while (GPIO.input(BUTTON_POWER) != GPIO.LOW): pass
+            diff = time.time() - last
         power = True
-        print("power")
 
         while (power):
-            print("Power On")
-
-            while ((GPIO.input(BUTTON_POWER) != GPIO.HIGH) and (GPIO.input(BUTTON_COLOR_DETECT) != GPIO.HIGH) and (GPIO.input(BUTTON_SPATIAL_REC) != GPIO.HIGH) and (GPIO.input(BUTTON_LIGHT_INTENSE) != GPIO.HIGH)):
-                if (GPIO.input(BUTTON_POWER) == GPIO.HIGH):
-                    print("POWER")
-                    while (GPIO.input(BUTTON_POWER) == GPIO.HIGH): pass
+            #print("Power On")
+            diff = 0
+            while ((GPIO.input(BUTTON_POWER) != GPIO.HIGH) and (GPIO.input(BUTTON_COLOR_DETECT) != GPIO.HIGH) and (GPIO.input(BUTTON_SPATIAL_REC) != GPIO.HIGH) and (GPIO.input(BUTTON_LIGHT_INTENSE) != GPIO.HIGH)): pass
+            if (GPIO.input(BUTTON_POWER) == GPIO.HIGH):
+                print("POWER")
+                last = time.time()
+                while (GPIO.input(BUTTON_POWER) == GPIO.HIGH): pass
+                diff = time.time() - last
+                if (diff > 0.2):
                     power = False
-                    break
-                elif (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH):
-                    print("COLOR")
-                    while (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH): pass
+            elif (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH):
+                print("COLOR")
+                last = time.time()
+                while (GPIO.input(BUTTON_COLOR_DETECT) == GPIO.HIGH): pass
+                diff = time.time() - last
+                if (diff > 0.2):
                     colorStatus = True
-                    break
-                elif (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH):
-                    print("SPATIAL")
-                    while (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH): pass
+            elif (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH):
+                print("SPATIAL")
+                last = time.time()
+                while (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH): pass
+                diff = time.time() - last
+                if (diff > 0.2):
                     spatialStatus = True
-                    break
-                elif (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH):
-                    print("LIGHT")
-                    while (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH): pass
+            elif (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH):
+                print("LIGHT")
+                last = time.time()
+                while (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH): pass
+                diff = time.time() - last
+                if (diff > 0.2):
                     lightStatus = True
-                    break
+
+            if (diff < 0.2):
+                continue
 
             if (not power):
                 break
