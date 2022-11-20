@@ -34,18 +34,18 @@ def main():
         spatialStatus = False
         lightStatus = False
 
-        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda: power = True)
+        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda: (power := True))
         while (not power): pass # Wait for power to turn on
         GPIO.remove_event_detect(BUTTON_POWER)
-        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda: power = False)
+        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda: (power := False))
 
         while (power):
 
             #attach event to pin
             
-            GPIO.add_event_detect(BUTTON_COLOR_DETECT, GPIO.FALLING, callback=lambda: colorStatus = True)
-            GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=lambda: spatialStatus = True)
-            GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=lambda: lightStatus = True)
+            GPIO.add_event_detect(BUTTON_COLOR_DETECT, GPIO.FALLING, callback=lambda: (colorStatus := True))
+            GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=lambda: (spatialStatus := True))
+            GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=lambda: (lightStatus := True))
 
             while (power and (not colorStatus) and (not spatialStatus) and (not lightStatus)): pass # Wait for button press
 
@@ -68,7 +68,6 @@ def main():
                 # call gcp
                 speech_to_text(f"The colour is {recent_colour}", audio_file)
             elif (spatialStatus):
-                gcp_phrase = 
                 speech_to_text("Spatial recognition on.", audio_file)
                 call_range_sensor()
             else:
