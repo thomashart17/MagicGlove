@@ -2,6 +2,7 @@ import os
 from google.cloud import texttospeech # outdated or incomplete comparing to v1
 from google.cloud import texttospeech_v1
 from speaker_connect import *
+from moviepy.editor import concatenate_audioclips, AudioFileClip
 
 def speech_to_text(phrase, audio_file_path):
     print("Running GCP...")
@@ -38,6 +39,15 @@ def speech_to_text(phrase, audio_file_path):
         out.write(response.audio_content)
         print('Audio content written to file "audiofile.mp3"')
     
+    # concating audio files for delay
+    audio_clip_paths = ["/home/magicglove/MagicGlove/test/wait.m4a", audio_file_path]
+    output_path = audio_file_path
+    concatenate_audio_moviepy(audio_clip_paths, output_path)
+    
     call_speaker()
     
+def concatenate_audio_moviepy(audio_clip_paths, output_path):
+    clips = [AudioFileClip(c) for c in audio_clip_paths]
+    final_clip = concatenate_audioclips(clips)
+    final_clip.write_audiofile(output_path)
 
