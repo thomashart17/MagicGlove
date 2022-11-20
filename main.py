@@ -13,7 +13,7 @@ def main():
 
     # interfacing gpio
     GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
 
     BUTTON_POWER = 10
     BUTTON_COLOR_DETECT = 9
@@ -35,16 +35,10 @@ def main():
         spatialStatus = False
         lightStatus = False
 
-        def callback():
-            print("in callback")
-            power = True
-
-        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=callback)
-        while (True):
-            # Wait for power to turn on
-            if (power): break
+        while (GPIO.input(BUTTON_POWER != GPIO.HIGH)): pass
+        while (GPIO.input(BUTTON_POWER != GPIO.LOW)): pass
+        power = True
         print("power")
-        GPIO.remove_event_detect(BUTTON_POWER)
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := False))
 
         while (power):
