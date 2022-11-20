@@ -40,7 +40,7 @@ def speech_to_text(phrase, audio_file_path):
         print('Audio content written to file "audiofile.mp3"')
     
     # concating audio files for delay
-    audio_clip_paths = ["/home/magicglove/MagicGlove/test/wait.m4a", audio_file_path]
+    audio_clip_paths = ["/home/magicglove/MagicGlove/test/waitnew.m4a", audio_file_path]
     output_path = audio_file_path
     concatenate_audio_moviepy(audio_clip_paths, output_path)
     
