@@ -5,7 +5,7 @@ from range_sensor import *
 from gcp_text2speech import *
 =======
 from light_detection import *
-from MagicGlove.gcp_text2speech import *
+from gcp_text2speech import *
 import RPi.GPIO as GPIO
 import time
 >>>>>>> d16d2503fb7136e2f974517c3b2c6f49407be4f3
