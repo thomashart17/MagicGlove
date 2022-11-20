@@ -13,11 +13,6 @@ def light_intensity():
     GPIO.output(ldr, GPIO.LOW)
     time.sleep(delayt)
     GPIO.setup(ldr, GPIO.IN)
-
-    #time.sleep(0.1)
-
-    #Change the pin back to input
-    #GPIO.setup(7, GPIO.IN)
   
     #Count until the pin goes high
     while (GPIO.input(ldr) == GPIO.LOW):
@@ -25,12 +20,19 @@ def light_intensity():
 
     return count
 
+def calling():
+    value = 0
+    timeout = 2 # [seconds]
+    timeout_start = time.time()
+    while (True and time.time() < timeout_start + timeout):
+            store = light_intensity()
+            print(value)
+    
+    if ( value <= 200 ):
+            print("Lights are ON")
+    else:
+        print("Lights are OFF")
+    
+
 if __name__ == "__main__":
-    try:
-        # Main loop
-        while True:
-            print(light_intensity())
-    except KeyboardInterrupt:
-        pass
-    finally:
-        GPIO.cleanup()
+    calling()
