@@ -29,7 +29,7 @@ if __name__ == "__main__":
     try:
         # Main loop
         while True:
-            print(light_intensity(7))
+            print(light_intensity())
     except KeyboardInterrupt:
         pass
     finally:
