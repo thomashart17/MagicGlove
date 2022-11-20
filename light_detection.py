@@ -1,29 +1,31 @@
 import RPi.GPIO as GPIO
 import time
-
-GPIO.setmode(GPIO.BCM)
-
-# delayt = .1 
-ldr = 7 #ldr is connected with pin number 7
+GPIO.setmode(GPIO.BOARD)
 
 def light_intensity ():
-    # intensity = 0
+    intensity = 0
 
-    time.sleep(0.2)
+    ldr = 7 #ldr is connected with pin number 7
+    light_on = False
+    count = 0
+    delayt = 0.1
 
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(ldr,GPIO.IN)
-    GPIO.setwarnings(True)
+    #Output on the pin for
+    GPIO.setup(ldr, GPIO.OUT)
+    GPIO.output(ldr, GPIO.LOW)
+    time.sleep(delayt)
+    GPIO.setup(ldr, GPIO.IN)
 
-    # 0 = dark, 1 = light
-    try:
-        print (" Read: " + str(GPIO.input(ldr)) + " ", end='\r')
-        time.sleep(1)
-    except KeyboardInterrupt:
-        print('interrupted!')
-        GPIO.cleanup()
+    timeout = 5 # [seconds]
+    timeout_start = time.time()
+    #Count until the pin goes high
+    while (GPIO.input(ldr) == GPIO.LOW) and (time.time() < timeout_start + timeout):
+        count += 1
+        print(count)
     
-    intensity = GPIO.input(ldr)
+    if(count <= 200) : 
+        light_on = True
+    else:
+        light_on = False
 
-    return intensity
+    return light_on

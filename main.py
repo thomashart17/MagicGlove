@@ -80,7 +80,7 @@ def main():
                 colorStatus = False
 
                 # call gcp
-                speech_to_text(f"The colour is {recent_colour}", audio_file)
+                speech_to_text("The colour is {recent_colour}", audio_file)
             elif (spatialStatus):
                 speech_to_text("Spatial recognition on.", audio_file)
                 call_range_sensor()
@@ -93,7 +93,7 @@ def main():
                 intensity = light_intensity()
                 print('Status for light intensity: ', intensity)
 
-                if intensity == 1:
+                if intensity:
                     print('start')
                     speech_to_text("The lights are on", audio_file)
                 else:
