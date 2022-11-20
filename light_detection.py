@@ -20,7 +20,7 @@ def light_intensity ():
     # #Count until the pin goes high
     # while (GPIO.input(ldr) == GPIO.LOW):
     #     intensity += 1
-    time.sleep(2)
+    time.sleep(0.2)
 
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
