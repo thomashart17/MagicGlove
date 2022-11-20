@@ -14,13 +14,13 @@ def light_intensity():
     time.sleep(delayt)
     GPIO.setup(ldr, GPIO.IN)
 
-    time.sleep(0.1)
+    #time.sleep(0.1)
 
     #Change the pin back to input
-    GPIO.setup(7, GPIO.IN)
+    #GPIO.setup(7, GPIO.IN)
   
     #Count until the pin goes high
-    while (GPIO.input(ldr) == 0):
+    while (GPIO.input(ldr) == GPIO.LOW):
         count += 1
 
     return count
