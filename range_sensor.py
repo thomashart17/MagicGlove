@@ -10,7 +10,6 @@ ECHO = 24
 #buzzer sound
 BUZZER = 25
 
-print ("Distance Measurement in Progress")
 
 #Set GPIO ports as inputs/outputs
 GPIO.setup(TRIG, GPIO.OUT)
@@ -18,6 +17,7 @@ GPIO.setup(ECHO, GPIO.IN)
 GPIO.setup(BUZZER, GPIO.OUT)
 
 def compute_distance():
+    print ("Distance Measurement in Progress")
     #Trigger pin is set to low and giving sensor time to settle
     GPIO.output(TRIG, False)
     print("Waiting for Sensor to Settle")
