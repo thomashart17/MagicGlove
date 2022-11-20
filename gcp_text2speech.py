@@ -1,6 +1,7 @@
 import os
 from google.cloud import texttospeech # outdated or incomplete comparing to v1
 from google.cloud import texttospeech_v1
+from speaker_connect import *
 
 def speech_to_text(phrase, audio_file_path):
     print("Running GCP...")
@@ -36,3 +37,7 @@ def speech_to_text(phrase, audio_file_path):
         # Write the response to the output file.
         out.write(response.audio_content)
         print('Audio content written to file "audiofile.mp3"')
+    
+    call_speaker()
+    
+
