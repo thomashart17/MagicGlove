@@ -3,10 +3,6 @@ from colour_detect import *
 from range_sensor import *
 from gcp_text2speech import *
 from light_detection import *
-<<<<<<< HEAD
-from gcp_text2speech import *
-=======
->>>>>>> 242c2fb54d083ea8434b777acda7beeb4153005a
 import RPi.GPIO as GPIO
 import time
 
