@@ -56,7 +56,7 @@ def main():
                     while (GPIO.input(BUTTON_SPATIAL_REC) == GPIO.HIGH): pass
                     spatialStatus = True
                     break
-                elif (GPIO.input(BUTTON_LIGHT_INTENSE) != GPIO.HIGH):
+                elif (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH):
                     while (GPIO.input(BUTTON_LIGHT_INTENSE) == GPIO.HIGH): pass
                     lightStatus = True
                     break
