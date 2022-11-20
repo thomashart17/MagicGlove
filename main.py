@@ -21,7 +21,7 @@ def main():
     BUTTON_LIGHT_INTENSE = 0
 
     #Pin 9,10,11 & 0 is input pin and set intial value to be pulled low (off)
-    GPIO.setup(BUTTON_POWER, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(BUTTON_POWER, GPIO.IN)
     GPIO.setup(BUTTON_COLOR_DETECT, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(BUTTON_SPATIAL_REC, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(BUTTON_LIGHT_INTENSE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
