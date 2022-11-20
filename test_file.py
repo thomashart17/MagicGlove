@@ -21,14 +21,13 @@ def light_intensity():
     return count
 
 def calling():
-    value = 0
     timeout = 2 # [seconds]
     timeout_start = time.time()
     while (True and time.time() < timeout_start + timeout):
             store = light_intensity()
-            print(value)
+            print(store)
     
-    if ( value <= 200 ):
+    if ( store <= 200 ):
             print("Lights are ON")
     else:
         print("Lights are OFF")
