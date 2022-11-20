@@ -28,6 +28,7 @@ def main():
 
     # Main Loop for the Device
     while (True):
+        print("Device started")
         # intalize
         power = False
         colorStatus = False
@@ -36,6 +37,7 @@ def main():
 
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := True))
         while (True):
+            print(power)
             # Wait for power to turn on
             if (power): break
         print("power")
