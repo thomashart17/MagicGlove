@@ -1,8 +1,9 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BOARD)
+
+GPIO.setmode(GPIO.BCM)
+
 delayt = .1 
-value = 0 # this variable will be used to store the ldr value
 ldr = 7 #ldr is connected with pin number 7
 
 def light_intensity ():
@@ -17,7 +18,7 @@ def light_intensity ():
     GPIO.setup(ldr, GPIO.IN)
 
     #Count until the pin goes high
-    while (GPIO.input(ldr) == 0):
+    while (GPIO.input(ldr) == GPIO.LOW):
         intensity += 1
 
     return intensity
