@@ -40,9 +40,9 @@ def main():
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda: (power := False))
 
         while (power):
+            print("Power On")
 
             #attach event to pin
-            
             GPIO.add_event_detect(BUTTON_COLOR_DETECT, GPIO.FALLING, callback=lambda: (colorStatus := True))
             GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=lambda: (spatialStatus := True))
             GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=lambda: (lightStatus := True))
@@ -77,6 +77,7 @@ def main():
                     speech_to_text("The lights are on", audio_file)
                 else:
                     speech_to_text("The lights are off", audio_file)
+        print("Power Off")
 
 if __name__ == "__main__":
     main()
