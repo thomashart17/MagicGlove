@@ -90,17 +90,11 @@ def main():
                 print('Entered the light thread')
                 speech_to_text("Light detection on", audio_file)
 
-                intensity = light_intensity()
-                print('Status for light intensity: ', intensity)
-
-                if intensity:
-                    print(intensity)
-                    print('start')
+                if calling_light_sensor() == True:
                     speech_to_text("The lights are on", audio_file)
                 else:
                     speech_to_text("The lights are off", audio_file)
                     
-
                 lightStatus = False
         print("Power Off")
 
