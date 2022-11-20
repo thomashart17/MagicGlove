@@ -11,6 +11,7 @@ def image_capture(path):
     sleep(2)
     camera.capture_file(path)
     print("FILE CAPTURED")
+    camera.close()
 
 
 if __name__ == "__main__":
