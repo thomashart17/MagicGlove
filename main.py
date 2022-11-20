@@ -35,9 +35,12 @@ def main():
         spatialStatus = False
         lightStatus = False
 
-        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := True))
+        def callback():
+            print("in callback")
+            power = True
+
+        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=callback)
         while (True):
-            print(power)
             # Wait for power to turn on
             if (power): break
         print("power")
