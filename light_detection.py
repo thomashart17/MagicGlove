@@ -1,31 +1,26 @@
 import RPi.GPIO as GPIO
 import time
-#GPIO.setmode(GPIO.BOARD)
 
-def light_intensity ():
-    intensity = 0
+def light_intensity():
+    GPIO.setmode(GPIO.BOARD)
 
-    ldr = 7 #ldr is connected with pin number 7
-    light_on = False
-    count = 0
-    delayt = 0.1
+    resistorPin = 7
 
-    #Output on the pin for
-    GPIO.setup(ldr, GPIO.OUT)
-    GPIO.output(ldr, GPIO.LOW)
-    time.sleep(delayt)
-    GPIO.setup(ldr, GPIO.IN)
+    while True:
+        GPIO.setup(resistorPin, GPIO.OUT)
+        GPIO.output(resistorPin, GPIO.LOW)
+        time.sleep(0.1)
+        
+        GPIO.setup(resistorPin, GPIO.IN)
+        currentTime = time.time()
+        diff = 0
+        
+        while(GPIO.input(resistorPin) == GPIO.LOW):
+            diff  = time.time() - currentTime
+            
+        out = (diff * 1000)
+        
+        light_on = out <= 50
 
-    timeout = 5 # [seconds]
-    timeout_start = time.time()
-    #Count until the pin goes high
-    while (GPIO.input(ldr) == GPIO.LOW) and (time.time() < timeout_start + timeout):
-        count += 1
-        print(count)
-    
-    if(count <= 200) : 
-        light_on = True
-    else:
-        light_on = False
-
-    return light_on
+        return light_on
+            
