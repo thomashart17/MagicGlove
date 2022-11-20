@@ -87,13 +87,19 @@ def main():
 
                 spatialStatus = False
             elif (lightStatus):
+                print('Entered the light thread')
                 speech_to_text("Light detection on", audio_file)
+                print('got the command for light intensity')
 
                 intensity = light_intensity()
+                print('this is the status for light intnensity hahahah', intensity)
                 
                 if intensity:
+                    print('start')
                     speech_to_text("The lights are on", audio_file)
+                    print ('end')
                 else:
+                    print('off')
                     speech_to_text("The lights are off", audio_file)
 
                 lightStatus = False
