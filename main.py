@@ -35,8 +35,8 @@ def main():
         spatialStatus = False
         lightStatus = False
 
-        while (GPIO.input(BUTTON_POWER != GPIO.HIGH)): pass
-        while (GPIO.input(BUTTON_POWER != GPIO.LOW)): pass
+        while (GPIO.input(BUTTON_POWER) != GPIO.HIGH): pass
+        while (GPIO.input(BUTTON_POWER) != GPIO.LOW): pass
         power = True
         print("power")
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := False))
