@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BCM)
 
 def light_intensity():
     count = 0
-    ldr = 7 #ldr is connected with pin number 7
+    ldr = 4 #ldr is connected with pin number 7
     count = 0
     delayt = 0.1
 
