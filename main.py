@@ -94,6 +94,7 @@ def main():
                 print('Status for light intensity: ', intensity)
 
                 if intensity == 1:
+                    print(intensity)
                     print('start')
                     speech_to_text("The lights are on", audio_file)
                 else:
