@@ -13,7 +13,7 @@ def main():
 
     # interfacing gpio
     GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BOARD)
 
     BUTTON_POWER = 10
     BUTTON_COLOR_DETECT = 9
