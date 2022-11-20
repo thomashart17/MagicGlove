@@ -88,8 +88,10 @@ def main():
                 spatialStatus = False
             elif (lightStatus):
                 speech_to_text("Light detection on", audio_file)
+
+                intensity = light_intensity()
                 
-                if light_intensity():
+                if intensity:
                     speech_to_text("The lights are on", audio_file)
                 else:
                     speech_to_text("The lights are off", audio_file)
