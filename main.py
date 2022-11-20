@@ -94,7 +94,7 @@ def main():
                 intensity = light_intensity()
                 print('this is the status for light intnensity hahahah', intensity)
                 
-                if intensity:
+                if intensity <= 200:
                     print('start')
                     speech_to_text("The lights are on", audio_file)
                     print ('end')
