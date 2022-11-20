@@ -97,7 +97,7 @@ def main():
                     print('start')
                     speech_to_text("The lights are on", audio_file)
                 else:
-                    speech_to_text("The lights are on", audio_file)
+                    speech_to_text("The lights are off", audio_file)
                     
 
                 # if intensity <= 200:
