@@ -42,6 +42,7 @@ def main():
             while (GPIO.input(BUTTON_POWER) != GPIO.LOW): pass
             diff = time.time() - last
         power = True
+        speech_to_text("Power on.", audio_file)
 
         while (power):
             #print("Power On")
@@ -103,14 +104,14 @@ def main():
             elif (lightStatus):
                 print('Entered the light thread')
                 speech_to_text("Light detection on", audio_file)
-
                 if calling_light_sensor() == True:
                     speech_to_text("The lights are on", audio_file)
                 else:
                     speech_to_text("The lights are off", audio_file)
-                    
+
                 lightStatus = False
         print("Power Off")
+        speech_to_text("Power off", audio_file)
 
 if __name__ == "__main__":
     main()
