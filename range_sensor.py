@@ -50,7 +50,9 @@ def compute_distance():
 
 def call_range_sensor():
     try:
-        while True:
+        timeout = 30 # [seconds]
+        timeout_start = time.time()
+        while (True and time.time() < timeout_start + timeout):
             dist = compute_distance()
             print("Distance", dist, "cm")
             if dist < 50.00:  
