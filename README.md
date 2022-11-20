@@ -13,8 +13,7 @@ The sleek design is compact with three useful features:
 # Tech Stack 👾
 Software: Python, OpenCV, Google Cloud Speech-to-Text <br />
 Hardware: Raspberry Pi 4, Camera for Raspberry Pi, Ultrasonic Range Sensor, Buzzer, Photoresistors, Push Buttons
+<br />
+![TheMagicGlove](https://user-images.githubusercontent.com/89555654/202881304-e8d2222e-55b7-45c9-9e3e-df5147e0378d.jpg)
 
-<p align="center">
-  ![TheMagicGlove](https://user-images.githubusercontent.com/89555654/202881274-de20d341-2931-41bc-9203-c45ecf2036a3.jpg)
-</p>
 
