@@ -7,12 +7,9 @@ import RPi.GPIO as GPIO
 import time
 
 def main():
-
     # var for gcp
     audio_file = "/home/magicglove/MagicGlove/test/audiofile.mp3"
-
-    # intalize
-    power = False
+    image_file = "/home/magicglove/MagicGlove/test/image.jpg"
 
     # interfacing gpio
     GPIO.setwarnings(False)
@@ -29,81 +26,65 @@ def main():
     GPIO.setup(BUTTON_SPATIAL_REC, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(BUTTON_LIGHT_INTENSE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-    #attach event to pin
-    GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=button_power_callback)
-    GPIO.add_event_detect(BUTTON_COLOR_DETECT, GPIO.FALLING, callback= button_color_callback)
-    GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=button_spatial_callback)
-    GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=button_light_intense_callback)
+    # Main Loop for the Device
+    while (True):
+        # intalize
+        power = False
+        colorStatus = False
+        spatialStatus = False
+        lightStatus = False
 
-    # time lag for buttons
-    def last_button_press_calculate():
-        global last_button_press
-        if time.time() - last_button_press >= 0.3:
-            last_button_press = time.time()
+        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := True))
+        while (not power): pass # Wait for power to turn on
+        print("power")
+        GPIO.remove_event_detect(BUTTON_POWER)
+        GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := False))
 
-    # power button check
-    def button_power_callback(pin):
-        last_button_press_calculate()
-        print("Power Button was pushed!")
-        power =  not power
+        while (power):
+            print("Power On")
 
-    if power == True:
-        def button_color_callback(pin):
-            last_button_press_calculate()
-            # features
-            gcp_phrase = "Colour Detection ON"
-            speech_to_text(gcp_phrase, audio_file)
-            call_colour_detection()
+            #attach event to pin
+            GPIO.add_event_detect(BUTTON_COLOR_DETECT, GPIO.FALLING, callback=lambda pin: (colorStatus := True))
+            GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=lambda pin: (spatialStatus := True))
+            GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=lambda pin: (lightStatus := True))
 
-        def button_spatial_callback(pin):
-            last_button_press_calculate()
-            #features
-            gcp_phrase = "Spatial Recognition ON"
-            speech_to_text(gcp_phrase, audio_file)
-            call_range_sensor()
+            while (power and (not colorStatus) and (not spatialStatus) and (not lightStatus)): pass # Wait for button press
 
-        def button_light_intense_callback(pin):
-            last_button_press_calculate()
-            #features
-            gcp_phrase = "Light Detection ON"
-            speech_to_text(gcp_phrase, audio_file)
-            call_light_detection()
+            GPIO.remove_event_detect(BUTTON_COLOR_DETECT)
+            GPIO.remove_event_detect(BUTTON_SPATIAL_REC)
+            GPIO.remove_event_detect(BUTTON_LIGHT_INTENSE)
 
+            if (not power):
+                break
+            elif (colorStatus):
+                speech_to_text("Colour detection on", audio_file)
 
-    def call_colour_detection():
-        image_path = "/home/magicglove/MagicGlove/test/image.jpg"
+                # get image
+                image_capture(image_file)
 
-        # get image
-        image_capture(image_path)
+                # run colour detect on image and get colour
+                recent_colour = colour_detect_on_image(image_file)
+                print(recent_colour)
 
-        # run colour detect on image and get colour
-        recent_colour = colour_detect_on_image(image_path)
-        print(recent_colour)
-        colour_phrase = f"The colour is {recent_colour}"
+                colorStatus = False
 
-        # call gcp
-        audio_file = "/home/magicglove/MagicGlove/test/audiofile.mp3"
-        speech_to_text(colour_phrase, audio_file)
+                # call gcp
+                speech_to_text(f"The colour is {recent_colour}", audio_file)
+            elif (spatialStatus):
+                speech_to_text("Spatial recognition on.", audio_file)
+                call_range_sensor()
 
-    def call_light_detection():
-        # var for gcp
-        audio_file = "/home/magicglove/MagicGlove/test/audiofile.mp3"
+                spatialStatus = False
+            else:
+                speech_to_text("Light detection on", audio_file)
+                
+                if light_intensity():
+                    speech_to_text("The lights are on", audio_file)
+                else:
+                    speech_to_text("The lights are off", audio_file)
 
-        # call light detector file to get bool value
-        lights_on = light_intensity()
-        
-        if lights_on == True:
-            gcp_phrase = "The lights are on"
-            speech_to_text(gcp_phrase, audio_file)
-        else:
-            gcp_phrase = "The lights are on"
-            speech_to_text(gcp_phrase, audio_file)
-
-   
-
-    message = input("Press enter to quit\n\n")
-    GPIO.cleanup()
-
+                lightStatus = False
+        print("Power Off")
 
 if __name__ == "__main__":
     main()
