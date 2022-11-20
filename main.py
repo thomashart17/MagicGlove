@@ -35,7 +35,9 @@ def main():
         lightStatus = False
 
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := True))
-        while (not power): pass # Wait for power to turn on
+        while (True):
+            # Wait for power to turn on
+            if (power): break
         print("power")
         GPIO.remove_event_detect(BUTTON_POWER)
         GPIO.add_event_detect(BUTTON_POWER, GPIO.FALLING, callback=lambda pin: (power := False))
@@ -48,7 +50,9 @@ def main():
             GPIO.add_event_detect(BUTTON_SPATIAL_REC, GPIO.FALLING, callback=lambda pin: (spatialStatus := True))
             GPIO.add_event_detect(BUTTON_LIGHT_INTENSE, GPIO.FALLING, callback=lambda pin: (lightStatus := True))
 
-            while (power and (not colorStatus) and (not spatialStatus) and (not lightStatus)): pass # Wait for button press
+            while (True):
+                # Wait for button press
+                if ((not power) or colorStatus or spatialStatus or lightStatus): break
 
             GPIO.remove_event_detect(BUTTON_COLOR_DETECT)
             GPIO.remove_event_detect(BUTTON_SPATIAL_REC)
